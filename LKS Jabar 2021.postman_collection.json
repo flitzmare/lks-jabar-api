@@ -1,0 +1,634 @@
+{
+	"info": {
+		"_postman_id": "eab44963-810a-4f6a-b829-4dd5f103cccd",
+		"name": "LKS Jabar 2021",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Menu",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"Spaghetti\",\n    \"description\":\"Delicious!\",\n    \"price\":55000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/menu",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Menu Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Kebab\",\n    \"description\":\"Very tasty!\",\n    \"price\":70000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/menu",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 17:12:17 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "174"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 1,\n    \"name\": \"Kebab\",\n    \"description\": \"Very tasty!\",\n    \"price\": 70000,\n    \"CreatedAt\": \"2021-07-12T00:12:17.85515+07:00\",\n    \"UpdatedAt\": \"2021-07-12T00:12:17.85515+07:00\",\n    \"DeletedAt\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Get All Menu",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "localhost:3000/menu",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"menu"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get All Menu Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/menu",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 17:14:06 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "356"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 1,\n        \"name\": \"Kebab\",\n        \"description\": \"Very tasty!\",\n        \"price\": 70000,\n        \"CreatedAt\": \"2021-07-12T00:12:17.85515+07:00\",\n        \"UpdatedAt\": \"2021-07-12T00:12:17.85515+07:00\",\n        \"DeletedAt\": null\n    },\n    {\n        \"ID\": 2,\n        \"name\": \"Spaghetti\",\n        \"description\": \"Delicious!\",\n        \"price\": 55000,\n        \"CreatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"UpdatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"DeletedAt\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Get Menu By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:3000/menu/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"menu",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get Menu By ID Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/menu/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 17:25:39 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "181"
+						}
+					],
+					"cookie": [],
+					"body": "[\n    {\n        \"ID\": 2,\n        \"name\": \"Spaghetti\",\n        \"description\": \"Delicious!\",\n        \"price\": 55000,\n        \"CreatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"UpdatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"DeletedAt\": null\n    }\n]"
+				}
+			]
+		},
+		{
+			"name": "Login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"secret\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/login",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Login Error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 14:41:28 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "22"
+						}
+					],
+					"cookie": [],
+					"body": "\"user data not found!\""
+				},
+				{
+					"name": "Login Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"secret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/login",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 14:38:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "199"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJleHAiOjUyMjYwMTA3MDMsInVzZXJfaWQiOjEsInVzZXJuYW1lIjoiYWRtaW4ifQ.rHJY9L4FkQGXaKR7KRFodK_VLk6DaPAipNn7va-YBZs\",\n    \"type\": \"Bearer\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"secret\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/register",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Register Error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"secret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 17:38:42 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "29"
+						}
+					],
+					"cookie": [],
+					"body": "\"username has already taken!\""
+				},
+				{
+					"name": "Register Success",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"secret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 13:54:53 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "19"
+						}
+					],
+					"cookie": [],
+					"body": "\"Register success!\""
+				}
+			]
+		},
+		{
+			"name": "Update Menu",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"New Kebab\",\n    \"description\":\"Kebab new version is awesome!\",\n    \"price\":25000\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/menu/2",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"menu",
+						"2"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Update Menu Success",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"New Kebab\",\n    \"description\":\"Kebab new version is awesome!\",\n    \"price\":25000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/menu/2",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu",
+								"2"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 17:29:21 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "186"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 2,\n    \"name\": \"New Kebab\",\n    \"description\": \"Kebab new version is awesome!\",\n    \"price\": 25000,\n    \"CreatedAt\": \"0001-01-01T00:00:00Z\",\n    \"UpdatedAt\": \"2021-07-12T00:29:22.381786+07:00\",\n    \"DeletedAt\": null\n}"
+				}
+			]
+		},
+		{
+			"name": "Delete Product",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:3000/menu/3",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"menu",
+						"3"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Delete Product Success",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/menu/3",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu",
+								"3"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Sun, 11 Jul 2021 17:30:15 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "17"
+						}
+					],
+					"cookie": [],
+					"body": "\"Delete Success!\""
+				}
+			]
+		}
+	]
+}
