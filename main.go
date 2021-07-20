@@ -31,13 +31,13 @@ func main() {
 		requestBody := User{}
 		err := ctx.BodyParser(&requestBody)
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 
 		model := User{}
 		err = db.Where("username = ? AND password = ?", requestBody.Username, requestBody.Password).First(&model).Error
 		if err != nil {
-			return ctx.JSON("user data not found!")
+			return ctx.Status(400).JSON("user data not found!")
 		}
 
 		claims := jwt.MapClaims{}
@@ -48,7 +48,7 @@ func main() {
 		token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims)
 		result, err := token.SignedString([]byte("secret"))
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 		return ctx.JSON(map[string]string{
 			"type":  "Bearer",
@@ -60,58 +60,58 @@ func main() {
 		requestBody := User{}
 		err := ctx.BodyParser(&requestBody)
 		if err != nil {
-			return err
+			return ctx.Status(400).JSON(err.Error())
 		}
 
 		model := User{}
 		err = db.Where("username = ?", requestBody.Username).First(&model).Error
 		if err == nil {
-			return ctx.JSON("username has already taken!")
+			return ctx.Status(400).JSON("username has already taken!")
 		}
 
 		if requestBody.Username == "" {
-			return ctx.JSON("field 'username' can't be empty!")
+			return ctx.Status(400).JSON("field 'username' can't be empty!")
 		}
 		if requestBody.Password == "" {
-			return ctx.JSON("field 'password' can't be empty!")
+			return ctx.Status(400).JSON("field 'password' can't be empty!")
 		}
 		err = db.Create(&requestBody).Error
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 		return ctx.JSON("Register success!")
 	})
 
 	//Get all menu
 	app.Get("/menu", func(c *fiber.Ctx) error {
-		userid, err := GetUserID(c)
+		userid, err := GetUserID(db, c)
 		if err != nil {
-			return c.JSON(err.Error())
+			return c.Status(400).JSON(err.Error())
 		}
 		menus := make([]Menu, 0)
 		err = db.Where("user_id = ?", userid).Find(&menus).Error
 		if err != nil {
-			return c.JSON(err.Error())
+			return c.Status(400).JSON(err.Error())
 		}
 		return c.JSON(menus)
 	})
 
 	//Get menu by id
 	app.Get("/menu/:id", func(c *fiber.Ctx) error {
-		userid, err := GetUserID(c)
+		userid, err := GetUserID(db, c)
 		if err != nil {
-			return c.JSON(err.Error())
+			return c.Status(400).JSON(err.Error())
 		}
 		id, err := c.ParamsInt("id")
 		if err != nil {
-			return c.JSON(err.Error())
+			return c.Status(400).JSON(err.Error())
 		}
-		menus := make([]Menu, 0)
-		err = db.Where("id = ? AND user_id = ?", id, userid).Find(&menus).Error
+		menu := Menu{}
+		err = db.Where("id = ? AND user_id = ?", id, userid).First(&menu).Error
 		if err != nil {
-			return c.JSON(err.Error())
+			return c.Status(400).JSON(err.Error())
 		}
-		return c.JSON(menus)
+		return c.JSON(menu)
 	})
 
 	//Create menu
@@ -119,25 +119,25 @@ func main() {
 		requestBody := Menu{}
 		err := ctx.BodyParser(&requestBody)
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 
-		userid, err := GetUserID(ctx)
+		userid, err := GetUserID(db, ctx)
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 
 		requestBody.UserID = *userid
 
 		if requestBody.Name == "" {
-			return ctx.JSON("field 'name' can't be empty!")
+			return ctx.Status(400).JSON("field 'name' can't be empty!")
 		}
 		if requestBody.Price == 0 {
-			return ctx.JSON("field 'price' can't be zero or empty!")
+			return ctx.Status(400).JSON("field 'price' can't be zero or empty!")
 		}
 		err = db.Create(&requestBody).Error
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 		return ctx.JSON(requestBody)
 	})
@@ -147,26 +147,31 @@ func main() {
 		requestBody := Menu{}
 		id, err := ctx.ParamsInt("id")
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
-		userid, err := GetUserID(ctx)
+		userid, err := GetUserID(db, ctx)
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 		requestBody.ID = uint(id)
 		err = ctx.BodyParser(&requestBody)
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 		if requestBody.Name == "" {
-			return ctx.JSON("field 'name' can't be empty!")
+			return ctx.Status(400).JSON("field 'name' can't be empty!")
 		}
 		if requestBody.Price == 0 {
-			return ctx.JSON("field 'price' can't be zero or empty!")
+			return ctx.Status(400).JSON("field 'price' can't be zero or empty!")
 		}
-		err = db.Model(&requestBody).Where("id = ? AND user_id = ? AND deleted_at is NULL", requestBody.ID, userid).Updates(&requestBody).Error
+		menu := Menu{}
+		err = db.Where("id = ? AND user_id = ?", id, userid).First(&menu).Error
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
+		}
+		err = db.Model(&menu).Where("id = ? AND user_id = ? AND deleted_at is NULL", requestBody.ID, userid).Updates(&requestBody).Error
+		if err != nil {
+			return ctx.Status(400).JSON(err.Error())
 		}
 		return ctx.JSON(requestBody)
 	})
@@ -175,16 +180,20 @@ func main() {
 	app.Delete("/menu/:id", func(ctx *fiber.Ctx) error {
 		id, err := ctx.ParamsInt("id")
 		if err != nil {
-			return err
+			return ctx.Status(400).JSON(err.Error())
 		}
-		userid, err := GetUserID(ctx)
+		userid, err := GetUserID(db, ctx)
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 		menu := Menu{}
+		err = db.Where("id = ? AND user_id = ?", id, userid).First(&menu).Error
+		if err != nil {
+			return ctx.Status(400).JSON(err.Error())
+		}
 		err = db.Model(&menu).Where("id = ? AND user_id = ? AND deleted_at is NULL", id, userid).Delete(&menu).Error
 		if err != nil {
-			return ctx.JSON(err.Error())
+			return ctx.Status(400).JSON(err.Error())
 		}
 		return ctx.JSON("Delete Success!")
 	})
@@ -192,7 +201,7 @@ func main() {
 	app.Listen(":3000")
 }
 
-func GetUserID(c *fiber.Ctx) (*uint, error) {
+func GetUserID(db *gorm.DB, c *fiber.Ctx) (*string, error) {
 	if c.Get("Authorization") == "" {
 		return nil, errors.New("header 'Authorization' not found!")
 	}
@@ -218,9 +227,15 @@ func GetUserID(c *fiber.Ctx) (*uint, error) {
 	}
 
 	if claims, ok := token.Claims.(jwt.MapClaims); ok && token.Valid {
-		result := claims["user_id"].(float64)
-		var res = uint(result)
-		return &res, nil
+		result := claims["user_id"].(string)
+		//var res = uint(result)
+
+		user := User{}
+		err = db.Where("id = ?", result).First(&user).Error
+		if err != nil {
+			return nil, errors.New("bearer token is not valid")
+		}
+		return &result, nil
 	} else {
 		return nil, nil
 	}
@@ -234,7 +249,7 @@ type User struct {
 
 type Menu struct {
 	ID          uint    `gorm:"primaryKey"`
-	UserID      uint    `json:"-"`
+	UserID      string  `json:"-"`
 	Name        string  `json:"name"`
 	Description string  `json:"description"`
 	Price       float64 `json:"price"`

@@ -12,7 +12,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoiMiIsInVzZXJuYW1lIjoiYWRtaW4yIn0.kQn3BFuXAuBgB6W1FQQQ1SZhPIgplfFSiVXiT07LIng",
 						"type": "text"
 					}
 				],
@@ -37,6 +37,57 @@
 				}
 			},
 			"response": [
+				{
+					"name": "Create Menu Token Invalid",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"Spaghetti\",\n    \"description\":\"Delicious!\",\n    \"price\":55000\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/menu",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 20 Jul 2021 10:15:26 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						}
+					],
+					"cookie": [],
+					"body": "\"bearer token is not valid\""
+				},
 				{
 					"name": "Create Menu Success",
 					"originalRequest": {
@@ -97,7 +148,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoiMiIsInVzZXJuYW1lIjoiYWRtaW4yIn0.kQn3BFuXAuBgB6W1FQQQ1SZhPIgplfFSiVXiT07LIng",
 						"type": "text"
 					}
 				],
@@ -154,6 +205,48 @@
 					],
 					"cookie": [],
 					"body": "[\n    {\n        \"ID\": 1,\n        \"name\": \"Kebab\",\n        \"description\": \"Very tasty!\",\n        \"price\": 70000,\n        \"CreatedAt\": \"2021-07-12T00:12:17.85515+07:00\",\n        \"UpdatedAt\": \"2021-07-12T00:12:17.85515+07:00\",\n        \"DeletedAt\": null\n    },\n    {\n        \"ID\": 2,\n        \"name\": \"Spaghetti\",\n        \"description\": \"Delicious!\",\n        \"price\": 55000,\n        \"CreatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"UpdatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"DeletedAt\": null\n    }\n]"
+				},
+				{
+					"name": "Get All Menu Token Invalid",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/menu",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 20 Jul 2021 10:15:46 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "27"
+						}
+					],
+					"cookie": [],
+					"body": "\"bearer token is not valid\""
 				}
 			]
 		},
@@ -161,22 +254,71 @@
 			"name": "Get Menu By ID",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoiMiIsInVzZXJuYW1lIjoiYWRtaW4yIn0.kQn3BFuXAuBgB6W1FQQQ1SZhPIgplfFSiVXiT07LIng",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "localhost:3000/menu/2",
+					"raw": "localhost:3000/menu/3",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"menu",
-						"2"
+						"3"
 					]
 				}
 			},
 			"response": [
 				{
 					"name": "Get Menu By ID Success",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoiMSIsInVzZXJuYW1lIjoiYWRtaW4ifQ.ujR5QRmM-KhXp68zKVkHZuZw5e_mZs39ThW9klcDgao",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "localhost:3000/menu/1",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"menu",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 20 Jul 2021 10:36:23 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "177"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"ID\": 1,\n    \"name\": \"Spaghetti\",\n    \"description\": \"Delicious!\",\n    \"price\": 55000,\n    \"CreatedAt\": \"2021-07-20T17:34:57.62693+07:00\",\n    \"UpdatedAt\": \"2021-07-20T17:34:57.62693+07:00\",\n    \"DeletedAt\": null\n}"
+				},
+				{
+					"name": "Get Menu By ID Token Invalid",
 					"originalRequest": {
 						"method": "GET",
 						"header": [
@@ -198,13 +340,13 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
+					"status": "Bad Request",
+					"code": 400,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
 							"key": "Date",
-							"value": "Sun, 11 Jul 2021 17:25:39 GMT"
+							"value": "Tue, 20 Jul 2021 10:15:56 GMT"
 						},
 						{
 							"key": "Content-Type",
@@ -212,11 +354,11 @@
 						},
 						{
 							"key": "Content-Length",
-							"value": "181"
+							"value": "27"
 						}
 					],
 					"cookie": [],
-					"body": "[\n    {\n        \"ID\": 2,\n        \"name\": \"Spaghetti\",\n        \"description\": \"Delicious!\",\n        \"price\": 55000,\n        \"CreatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"UpdatedAt\": \"2021-07-12T00:13:59.680362+07:00\",\n        \"DeletedAt\": null\n    }\n]"
+					"body": "\"bearer token is not valid\""
 				}
 			]
 		},
@@ -253,7 +395,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"admin\"\n}",
+							"raw": "{\n    \"username\":\"admin\",\n    \"password\":\"secret\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -271,13 +413,13 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
+					"status": "Bad Request",
+					"code": 400,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
 							"key": "Date",
-							"value": "Sun, 11 Jul 2021 14:41:28 GMT"
+							"value": "Tue, 20 Jul 2021 10:16:56 GMT"
 						},
 						{
 							"key": "Content-Type",
@@ -389,13 +531,13 @@
 							]
 						}
 					},
-					"status": "OK",
-					"code": 200,
+					"status": "Bad Request",
+					"code": 400,
 					"_postman_previewlanguage": "json",
 					"header": [
 						{
 							"key": "Date",
-							"value": "Sun, 11 Jul 2021 17:38:42 GMT"
+							"value": "Tue, 20 Jul 2021 10:17:19 GMT"
 						},
 						{
 							"key": "Content-Type",
@@ -408,6 +550,51 @@
 					],
 					"cookie": [],
 					"body": "\"username has already taken!\""
+				},
+				{
+					"name": "Register Username Empty Error",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"\",\n    \"password\":\"secret\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "localhost:3000/register",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"register"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Tue, 20 Jul 2021 10:17:45 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Content-Length",
+							"value": "34"
+						}
+					],
+					"cookie": [],
+					"body": "\"field 'username' can't be empty!\""
 				},
 				{
 					"name": "Register Success",
@@ -463,7 +650,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoiMiIsInVzZXJuYW1lIjoiYWRtaW4yIn0.kQn3BFuXAuBgB6W1FQQQ1SZhPIgplfFSiVXiT07LIng",
 						"type": "text"
 					}
 				],
@@ -544,14 +731,14 @@
 			]
 		},
 		{
-			"name": "Delete Product",
+			"name": "Delete Menu",
 			"request": {
 				"method": "DELETE",
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoxLCJ1c2VybmFtZSI6ImFkbWluIn0.pVlDTWTDFMchXSB-P0h-FIEClESO_KbKXZLwdxQfKnM",
-						"type": "text"
+						"type": "text",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdXRob3JpemVkIjp0cnVlLCJ1c2VyX2lkIjoiMiIsInVzZXJuYW1lIjoiYWRtaW4yIn0.kQn3BFuXAuBgB6W1FQQQ1SZhPIgplfFSiVXiT07LIng"
 					}
 				],
 				"body": {
@@ -564,20 +751,20 @@
 					}
 				},
 				"url": {
-					"raw": "localhost:3000/menu/3",
+					"raw": "localhost:3000/menu/1",
 					"host": [
 						"localhost"
 					],
 					"port": "3000",
 					"path": [
 						"menu",
-						"3"
+						"1"
 					]
 				}
 			},
 			"response": [
 				{
-					"name": "Delete Product Success",
+					"name": "Delete Menu Success",
 					"originalRequest": {
 						"method": "DELETE",
 						"header": [
